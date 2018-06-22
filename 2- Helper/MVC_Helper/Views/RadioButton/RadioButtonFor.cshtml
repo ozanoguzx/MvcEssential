@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "RadioButtonFor";
+}
+
+@model MVC_Helper.Models.Yazilim
+<!----------------------------------------------------------------------------------------->
+<!--1. Kullanım
+    1. Kullanım Parametreleri;
+       1) "id" ve "name" atribute değerleri için parametre
+       2) Object olarak istediği değeri, ilgili kontrol seçildiği zaman arka tarafa gönderir.
+
+    NOT: Radio butonları gruplamak için 1. parametredeki değerler aynı olmak zorundadır. Aynı isim'de olan kontroller birer grup halinde çalışacaktır.
+-->
+C : @Html.RadioButtonFor(x => x.Key, "C")
+<br />
+C# : @Html.RadioButtonFor(x => x.Key, "C#")
+<!--Sayfa Çıktısı
+   C  : <input id="Key" name="Key" type="radio" value="C" />
+   C# : <input id="Key" name="Key" type="radio" value="C#" />
+        -->
+<!----------------------------------------------------------------------------------------->
+<hr />
+
+<!----------------------------------------------------------------------------------------->
+<!--2. Kullanım
+    2. Kullanım Parametreleri;
+       1) "id" ve "name" atribute değerleri için parametre
+       2) Object olarak istediği değeri, ilgili kontrol seçildiği zaman arka tarafa gönderir.
+       3) Html Atribute değerlerini belirleyebilmeniz için gerekli alan
+
+-->
+C : @Html.RadioButtonFor(x => x.Key, "C", new { @style = "margin:10px" })
+<br />
+C# : @Html.RadioButtonFor(x => x.Key, "C#", new { @style = "margin:10px" })
+<!--Sayfa Çıktısı
+C : <input id="Key" name="Key" style="margin:10px" type="radio" value="C" />
+C# : <input id="Key" name="Key" style="margin:10px" type="radio" value="C#" />
+
+        -->
+<!----------------------------------------------------------------------------------------->
+<hr />
+
+<!----------------------------------------------------------------------------------------->
+<!--3. Kullanım
+    3. Kullanım Parametreleri;
+       1) "id" ve "name" atribute değerleri için parametre
+       2) Object olarak istediği değeri, ilgili kontrol seçildiği zaman arka tarafa gönderir.
+       3) Birden fazla Attribute değeri verebilmeniz için Dictionary olarak bir dizi ister
+-->
+C : @Html.RadioButtonFor(x => x.Key, "C", new Dictionary<string, object>() { { "id", "secim" }, { "class", "renk" } })
+<br />
+C# : @Html.RadioButtonFor(x => x.Key, "C#", new Dictionary<string, object>() { { "id", "secim" }, { "class", "renk" } })
+
+<!--Sayfa Çıktısı
+C : <input class="renk" id="secim" name="Key" type="radio" value="C" />
+C# : <input class="renk" id="secim" name="Key" type="radio" value="C#" />
+
+        -->
+<!----------------------------------------------------------------------------------------->
+<hr />

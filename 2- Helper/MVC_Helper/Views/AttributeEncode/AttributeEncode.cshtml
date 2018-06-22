@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "AttributeEncode";
+}
+@model MVC_Helper.Models.Personel
+<!--
+
+     Html.AttributeEncode, metodu sayfa içerisinde charset kullanmadan karakterleri Encode edebilirsiniz.
+-->
+<!----------------------------------------------------------------------------------------->
+<!--1. Kullanım
+    1. Kullanım Parametreleri;
+       1) Object olarak parametre alır
+
+-->
+@Html.AttributeEncode(Model.Ad)
+
+<!----------------------------------------------------------------------------------------->
+<hr />
+
+<!----------------------------------------------------------------------------------------->
+<!--2. Kullanım
+    2. Kullanım Parametreleri;
+       1) string olarak parametre alır.
+
+-->
+@Html.AttributeEncode(Model.Ad)
+
+<!----------------------------------------------------------------------------------------->
+<hr />

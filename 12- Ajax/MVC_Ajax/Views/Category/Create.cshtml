@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+@model MVC_Ajax.Models.Category
+
+<div id="alertMessage" style="display:none" class="alert alert-dismissible fade in" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+    <p> </p>
+</div>
+
+<div class="row" style="margin-top:50px;">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            @using (Ajax.BeginForm("Create", "Category", FormMethod.Post, new AjaxOptions { OnSuccess = "success", LoadingElementId = "loading" }))
+            {
+                <div class="form-group">
+                    <p>Kategori Adı</p>
+                    @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control ", style = "min-width:100%" })
+                </div>
+                <div class="form-group">
+                    <p>Açıklama</p>
+                    @Html.TextAreaFor(x => x.Description, new { @class = "form-control ", style = "min-width:100%" })
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">Kategori Ekle</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div id="loading" style="top:17%; left:47%; position:absolute; display:none">
+    <img width="100" height="100" src="~/Content/Images/loading.gif" />
+</div>
+<script src="~/scripts/jquery-3.1.0.js"></script>
+
+@section script{
+    <script type="text/javascript">
+
+        function success(result) {
+            $("#alertMessage").removeAttr("style");
+            if (result.IsSuccess == true) {
+                $("form")[0].reset();
+                $("#alertMessage").addClass("alert-success");
+            }
+            else {
+                $("#alertMessage").addClass("alert-danger");
+            }
+
+            $("#alertMessage p").text(result.UserMessage);
+            setTimeout(function () {
+                $("#alertMessage").slideUp(1000);
+            }, 2000);
+        } 
+    </script>
+} 

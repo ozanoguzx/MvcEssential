@@ -1,0 +1,210 @@
+﻿@{
+    ViewBag.Title = "DropDownListFor";
+}
+@model  MVC_Helper.Models.Sehirler
+@section stil{
+    <style type="text/css">
+        .renk {
+            color: red;
+        }
+    </style>
+}
+
+<!----------------------------------------------------------------------------------------->
+<!--1. Kullanım
+    1. Kullanım Parametreleri;
+       1) "id" ve "name" atribute değerleri için parametre
+       2) Default olarak bir data kaynağından değilde, sizin belirlediğiniz bir listeyi içerisinde gösterebilirsiniz.
+-->
+@Html.DropDownListFor(x => x.ID, new List<SelectListItem>()
+{
+    new SelectListItem(){
+        Text="Ankara", Value = "1"
+                        },
+                          new SelectListItem(){
+        Text="İstanbul", Value = "2"
+                        },
+                          new SelectListItem(){
+        Text="Eskişehir", Value = "3"
+                        },  new SelectListItem(){
+        Text="İzmir", Value = "4"
+                        }
+})
+
+<!--Sayfa Çıktısı
+
+<select data-val="true" data-val-number="The field ID must be a number." data-val-required="The ID field is required." id="ID" name="ID">
+<option selected="selected" value="1">Ankara</option>
+<option value="2">İstanbul</option>
+<option value="3">Eskişehir</option>
+<option value="4">İzmir</option>
+</select>
+
+        -->
+<!----------------------------------------------------------------------------------------->
+<hr />
+<!----------------------------------------------------------------------------------------->
+<!--2. Kullanım
+    2. Kullanım Parametreleri;
+       1) "id" ve "name" atribute değerleri için parametre
+       2) Default olarak bir data kaynağından değilde, sizin belirlediğiniz bir listeyi içerisinde gösterebilirsiniz.
+       3) Html Attribue'leri verebilmeniz için gerekli parametre alanı sunar.
+-->
+@Html.DropDownListFor(x => x.ID, new List<SelectListItem>()
+{
+    new SelectListItem(){
+        Text="Ankara", Value = "1"
+                        },
+                          new SelectListItem(){
+        Text="İstanbul", Value = "2"
+                        },
+                          new SelectListItem(){
+        Text="Eskişehir", Value = "3"
+                        },  new SelectListItem(){
+        Text="İzmir", Value = "4"
+                        }
+}, new { @class = "renk" })
+
+<!--Sayfa Çıktısı
+
+<select class="renk" id="ID" name="ID"><option selected="selected" value="1">Ankara</option>
+<option value="2">İstanbul</option>
+<option value="3">Eskişehir</option>
+<option value="4">İzmir</option>
+</select>
+
+        -->
+<!----------------------------------------------------------------------------------------->
+<hr />
+<!----------------------------------------------------------------------------------------->
+<!--3. Kullanım
+    3. Kullanım Parametreleri;
+       1) "id" ve "name" atribute değerleri için parametre
+       2) Default olarak bir data kaynağından değilde, sizin belirlediğiniz bir listeyi içerisinde gösterebilirsiniz.
+       3) İlk sayfa yüklendiği anda seçili olarak gelen parametre için default bir değer belirleyebilirsiniz.
+
+    Not : optionLabel'a verdiğiniz değer seçili gelmez.
+-->
+@Html.DropDownListFor(x => x.ID, new List<SelectListItem>()
+{
+    new SelectListItem(){ Text="Ankara", Value = "1" },
+                          new SelectListItem(){ Text="İstanbul", Value = "2" },
+                          new SelectListItem(){ Text="Eskişehir", Value = "3" },
+                          new SelectListItem(){ Text="İzmir", Value = "4" }
+                         }, "Lütfen Seçiniz")
+
+<!--Sayfa Çıktısı
+
+<select id="ID" name="ID"><option value="">L&#252;tfen Se&#231;iniz</option>
+<option selected="selected" value="1">Ankara</option>
+<option value="2">İstanbul</option>
+<option value="3">Eskişehir</option>
+<option value="4">İzmir</option>
+</select>
+
+        -->
+<!----------------------------------------------------------------------------------------->
+<hr />
+<!----------------------------------------------------------------------------------------->
+<!--4. Kullanım
+    4. Kullanım Parametreleri;
+       1) "id" ve "name" atribute değerleri için parametre
+       2) Default olarak bir data kaynağından değilde, sizin belirlediğiniz bir listeyi içerisinde gösterebilirsiniz.
+       3) Birden fazla Attribute değeri verebilmeniz için Dictionary olarak bir dizi ister
+
+-->
+@Html.DropDownListFor(x => x.ID, new List<SelectListItem>()
+{
+    new SelectListItem(){ Text="Ankara", Value = "1" },
+    new SelectListItem(){ Text="İstanbul", Value = "2" },
+    new SelectListItem(){ Text="Eskişehir", Value = "3" },
+    new SelectListItem(){ Text="İzmir", Value = "4"  }
+}, new Dictionary<string, object>() { { "id", "sehirler" }, { "class", "renk" } })
+
+<!--Sayfa Çıktısı
+
+<select id="ID" name="ID"><option value="">L&#252;tfen Se&#231;iniz</option>
+<option selected="selected" value="1">Ankara</option>
+<option value="2">İstanbul</option>
+<option value="3">Eskişehir</option>
+<option value="4">İzmir</option>
+</select>
+
+        -->
+<!----------------------------------------------------------------------------------------->
+<hr />
+<!----------------------------------------------------------------------------------------->
+<!--5. Kullanım
+    5. Kullanım Parametreleri;
+       1) "id" ve "name" atribute değerleri için parametre
+       2) Default olarak bir data kaynağından değilde, sizin belirlediğiniz bir listeyi içerisinde gösterebilirsiniz.
+       3) İlk sayfa yüklendiği anda seçili olarak gelen parametre için default bir değer belirleyebilirsiniz.
+       4) Html Attribue'leri verebilmeniz için gerekli parametre alanı sunar.
+
+    Not : optionLabel'a verdiğiniz değer seçili gelmez.
+-->
+@Html.DropDownListFor(x => x.ID, new List<SelectListItem>()
+{
+    new SelectListItem(){
+        Text="Ankara", Value = "1"
+                        },
+                          new SelectListItem(){
+        Text="İstanbul", Value = "2"
+                        },
+                          new SelectListItem(){
+        Text="Eskişehir", Value = "3"
+                        },  new SelectListItem(){
+        Text="İzmir", Value = "4"
+                        }
+}, "Lütfen Seçiniz", new { @class = "renk" })
+
+<!--Sayfa Çıktısı
+
+<select class="renk" id="ID" name="ID"><option value="">L&#252;tfen Se&#231;iniz</option>
+<option selected="selected" value="1">Ankara</option>
+<option value="2">İstanbul</option>
+<option value="3">Eskişehir</option>
+<option value="4">İzmir</option>
+</select>
+
+        -->
+<!----------------------------------------------------------------------------------------->
+<hr />
+
+<!----------------------------------------------------------------------------------------->
+<!--6. Kullanım
+    6. Kullanım Parametreleri;
+       1) "id" ve "name" atribute değerleri için parametre
+       2) Default olarak bir data kaynağından değilde, sizin belirlediğiniz bir listeyi içerisinde gösterebilirsiniz.
+       3) İlk sayfa yüklendiği anda seçili olarak gelen parametre için default bir değer belirleyebilirsiniz.
+       4) Birden fazla Attribute değeri verebilmeniz için Dictionary olarak bir dizi ister
+
+    Not : optionLabel'a verdiğiniz değer seçili gelmez.
+-->
+@Html.DropDownListFor(x => x.ID, new List<SelectListItem>()
+{
+    new SelectListItem(){
+        Text="Ankara", Value = "1"
+                        },
+                          new SelectListItem(){
+        Text="İstanbul", Value = "2"
+                        },
+                          new SelectListItem(){
+        Text="Eskişehir", Value = "3"
+                        },  new SelectListItem(){
+        Text="İzmir", Value = "4"
+                        }
+}, "Lütfen Seçiniz", new Dictionary<string, object>() { { "id", "sehirler" }, { "class", "renk" } })
+
+<!--Sayfa Çıktısı
+
+<select class="renk" id="sehirler" name="ID"><option value="">L&#252;tfen Se&#231;iniz</option>
+<option selected="selected" value="1">Ankara</option>
+<option value="2">İstanbul</option>
+<option value="3">Eskişehir</option>
+<option value="4">İzmir</option>
+</select>
+
+            -->
+<!----------------------------------------------------------------------------------------->
+<hr />

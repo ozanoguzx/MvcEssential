@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Hatalar>
+  <Hata>
+    <HataMesaji>C:\Users\murat\Desktop\MVC_Application\MVC_Application\Views\Home\Index.cshtml(8): error CS0103: The name 'ApplcationInstance' does not exist in the current context</HataMesaji>
+    <HataTarihi>23.08.2016 18:12:41</HataTarihi>
+    <MakineIP>::1</MakineIP>
+  </Hata>
+  <Hata>
+    <HataMesaji>A public action method 'Test' was not found on controller 'MVC_Application.Controllers.HomeController'.</HataMesaji>
+    <HataTarihi>23.08.2016 18:15:13</HataTarihi>
+    <MakineIP>::1</MakineIP>
+  </Hata>
+</Hatalar>

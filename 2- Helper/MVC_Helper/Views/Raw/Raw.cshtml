@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Raw";
+}
+
+@model MVC_Helper.Models.Tasarim
+<!--
+
+    Html.Raw() => web form tarafındaki literal kontrolünün karşılığıdır. içerisinde html kodlarını encode edebilirsiniz.
+-->
+<!----------------------------------------------------------------------------------------->
+<!--1. Kullanım
+    1. Kullanım Parametreleri;
+       1) object olarak sizden sayfada gösterilecek olan değeri ister.
+
+-->
+@Html.Raw(@Model.Sayfa)
+
+<!----------------------------------------------------------------------------------------->
+<hr />
+<!----------------------------------------------------------------------------------------->
+<!--2. Kullanım
+    2. Kullanım Parametreleri;
+       1) string olarak sizden sayfada gösterilecek olan değeri ister.
+
+-->
+@Html.Raw("<div style='background-color:red; width:100px;height:100px;'></div>")
+
+<!----------------------------------------------------------------------------------------->
+<hr />

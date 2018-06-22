@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "Action";
+}
+<!--
+
+     Html.Action metodu, partial view'i Html-encoded string olarak çözümler.
+
+     Kullanım Olarak; Tanımlanan PartialView'ın Controller içerisinde Action'ı olmak zorundadır.  Html.Partial()'dan farkı; Html.Action() sizden bir action ve view isterken, Html.Partial'ın Action'ı olma zorunluğu yoktur.
+
+
+    Not : Eğer Göstermek istediğiniz Action "ActionResult" olarak tanımlı ise, tüm tag'lar ile yüklenir. PartialViewResult döner ise sadece sizin içerisinde tanımladığınız bölümler görünecektir.
+-->
+<!----------------------------------------------------------------------------------------->
+<!--1. Kullanım
+    1. Kullanım Parametreleri;
+       1) Aynı Controller İçerisindeki Action Adını verirseniz o Action Sayfa içerisinde konumlandırılacaktır.
+
+-->
+@Html.Action("_PartialAction")
+
+<!----------------------------------------------------------------------------------------->
+<hr />
+
+<!----------------------------------------------------------------------------------------->
+<!--2. Kullanım
+    2. Kullanım Parametreleri;
+       1) Aynı Controller İçerisindeki Action Adını verirseniz o Action Sayfa içerisinde konumlandırılacaktır.
+       2) Action içerisinde parametre göndermek için tanımlanan alan.
+
+-->
+@Html.Action("_PartialActionRouteValue", new { id = 1 })
+
+<!----------------------------------------------------------------------------------------->
+<hr />
+
+<!----------------------------------------------------------------------------------------->
+<!--3. Kullanım
+    3. Kullanım Parametreleri;
+       1) Aynı Controller İçerisindeki Action Adını verirseniz o Action Sayfa içerisinde konumlandırılacaktır.
+       2) Link'e tıklandığı zaman "URL" üzerinden bir veya birden fazla parametre gönderilecek ise, "RouteValueDictionary" içerisinde işlemler gerçekleştirilebilir.
+
+-->
+@Html.Action("_PartialActionRouteValue", new RouteValueDictionary(new { id = 1 }))
+
+<!----------------------------------------------------------------------------------------->
+<hr />
+
+<!----------------------------------------------------------------------------------------->
+<!--4. Kullanım
+    4. Kullanım Parametreleri;
+       1) Aynı Controller İçerisindeki Action Adını verirseniz o Action Sayfa içerisinde konumlandırılacaktır.
+       2) Başka bir Controller içerisindeki Partial View'e yönlendirme yapmak için sizden Controller Name ister.
+
+-->
+@Html.Action("_PartialAction", "Help")
+
+<!----------------------------------------------------------------------------------------->
+<hr />
+
+<!----------------------------------------------------------------------------------------->
+<!--5. Kullanım
+    5. Kullanım Parametreleri;
+       1) Aynı Controller İçerisindeki Action Adını verirseniz o Action Sayfa içerisinde konumlandırılacaktır.
+       2) Başka bir Controller içerisindeki Partial View'e yönlendirme yapmak için sizden Controller Name ister.
+       3) Action içerisinde parametre göndermek için tanımlanan alan.
+-->
+@Html.Action("_PartialActionRouteValue", "Help", new { id = 1 })
+
+<!----------------------------------------------------------------------------------------->
+<hr />
+
+<!----------------------------------------------------------------------------------------->
+<!--6. Kullanım
+    6. Kullanım Parametreleri;
+       1) Aynı Controller İçerisindeki Action Adını verirseniz o Action Sayfa içerisinde konumlandırılacaktır.
+       2) Başka bir Controller içerisindeki Partial View'e yönlendirme yapmak için sizden Controller Name ister.
+       3) Link'e tıklandığı zaman "URL" üzerinden bir veya birden fazla parametre gönderilecek ise, "RouteValueDictionary" içerisinde işlemler gerçekleştirilebilir.
+-->
+@Html.Action("_PartialActionRouteValue", "Help", new RouteValueDictionary(new { id = 1 }))
+
+<!----------------------------------------------------------------------------------------->
+<hr />

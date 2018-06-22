@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewBag.Title = "RenderAction";
+}
+<!--
+
+    Html.RenderAction metodu, çağırıldığı sayfanın TextWriter'ını kullanır. Yani doğrudan Http response stream'e yazılır. Bu yüzden Html.Action metodundan daha hızlıdır.
+
+    Html.RenderAction metodunda, partial view'i yorumlamak için "action" oluşturmamız gerekir.
+
+     Kullanım Olarak; Tanımlanan PartialView'ın Controller içerisinde Action'ı olmak zorunda değildir.  Html.Action()'dan farkı; Html.Action() sizden bir action ve view isterken, Html.Partial'da Action'ı olma zorunluğu yoktur.
+
+
+    Not : Eğer Göstermek istediğiniz Action "ActionResult" olarak tanımlı ise, tüm taglar ile yüklenir. PartialViewResult döner ise sadece sizin içerisinde tanımladığınız bölümler görünecektir.
+-->
+<!----------------------------------------------------------------------------------------->
+<!--1. Kullanım
+    1. Kullanım Parametreleri;
+       1) Aynı Controller İçerisindeki Action Adını verirseniz o Action Sayfa içerisinde konumlandırılacaktır.
+-->
+@{
+
+    Html.RenderAction("_Partial");
+}
+
+<!----------------------------------------------------------------------------------------->
+<hr />
+
+<!----------------------------------------------------------------------------------------->
+<!--2. Kullanım
+    2. Kullanım Parametreleri;
+       1) Aynı Controller İçerisindeki Action Adını verirseniz o Action Sayfa içerisinde konumlandırılacaktır.
+       2) Action içerisinde parametre göndermek için tanımlanan alan.
+-->
+@{
+
+    Html.RenderAction("_PartialActionRouteValue", new { id = 1 });
+}
+
+<!----------------------------------------------------------------------------------------->
+<hr />
+
+<!----------------------------------------------------------------------------------------->
+<!--3. Kullanım
+    3. Kullanım Parametreleri;
+       1) Aynı Controller İçerisindeki Action Adını verirseniz o Action Sayfa içerisinde konumlandırılacaktır.
+       2) Link'e tıklandığı zaman "URL" üzerinden bir veya birden fazla parametre gönderilecek ise, "RouteValueDictionary" içerisinde işlemler gerçekleştirilebilir.
+-->
+@{
+
+    Html.RenderAction("_PartialActionRouteValue", new RouteValueDictionary(new { id = 1 }));
+}
+
+<!----------------------------------------------------------------------------------------->
+<hr />
+<!----------------------------------------------------------------------------------------->
+<!--4. Kullanım
+    4. Kullanım Parametreleri;
+       1) Aynı Controller İçerisindeki Action Adını verirseniz o Action Sayfa içerisinde konumlandırılacaktır.
+       2) Link'e tıklandığı zaman "URL" üzerinden bir veya birden fazla parametre gönderilecek ise, "RouteValueDictionary" içerisinde işlemler gerçekleştirilebilir.
+-->
+@{
+
+    Html.RenderAction("_PartialActionRouteValue", new RouteValueDictionary(new { id = 1 }));
+}
+
+<!----------------------------------------------------------------------------------------->
+<hr />
+<!----------------------------------------------------------------------------------------->
+<!--5. Kullanım
+    5. Kullanım Parametreleri;
+       1) Aynı Controller İçerisindeki Action Adını verirseniz o Action Sayfa içerisinde konumlandırılacaktır.
+       2) Başka bir Controller içerisindeki Partial Kullanılacak ise, Controller Name tanımlanır.
+       3) Action içerisinde parametre göndermek için tanımlanan alan.
+-->
+@{
+
+    Html.RenderAction("_PartialActionRouteValue", "RenderAction", new { id = 1 });
+}
+
+<!----------------------------------------------------------------------------------------->
+<hr />
+<!----------------------------------------------------------------------------------------->
+<!--6. Kullanım
+    6. Kullanım Parametreleri;
+       1) Aynı Controller İçerisindeki Action Adını verirseniz o Action Sayfa içerisinde konumlandırılacaktır.
+       2) Başka bir Controller içerisindeki Partial Kullanılacak ise, Controller Name tanımlanır.
+       3) Link'e tıklandığı zaman "URL" üzerinden bir veya birden fazla parametre gönderilecek ise, "RouteValueDictionary" içerisinde işlemler gerçekleştirilebilir.
+-->
+@{
+
+    Html.RenderAction("_PartialActionRouteValue", "RenderAction", new RouteValueDictionary(new { id = 1 }));
+}
+
+<!----------------------------------------------------------------------------------------->

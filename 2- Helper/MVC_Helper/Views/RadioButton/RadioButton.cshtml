@@ -1,0 +1,117 @@
+﻿@{
+    ViewBag.Title = "RadioButton";
+}
+<!----------------------------------------------------------------------------------------->
+<!--1. Kullanım
+    1. Kullanım Parametreleri;
+       1) "id" ve "name" atribute değerleri için parametre
+       2) Object olarak istediği değeri, ilgili kontrol seçildiği zaman arka tarafa gönderir.
+
+    NOT: Radio butonları gruplamak için 1. parametredeki değerler aynı olmak zorundadır. Aynı isim'de olan kontroller birer grup halinde çalışacaktır.
+-->
+Erkek : @Html.RadioButton("yazilim", 1)
+
+<!--Sayfa Çıktısı
+
+<input id="yazilim" name="yazilim" type="radio" value="1" />
+
+        -->
+<!----------------------------------------------------------------------------------------->
+<hr />
+
+<!----------------------------------------------------------------------------------------->
+<!--2. Kullanım
+    2. Kullanım Parametreleri;
+       1) "id" ve "name" atribute değerleri için parametre
+       2) "object" olarak istediği değeri, ilgili kontrol seçildiği zaman arka tarafa gönderir.
+       3) "bool" tipinde aldığı parametre ile, açılışta seçili olarak gelmesini sağlarsınız.
+
+    NOT: Radio butonları gruplamak için 1. parametredeki değerler aynı olmak zorundadır. Aynı isim'de olan kontroller birer grup halinde çalışacaktır.
+-->
+Erkek : @Html.RadioButton("yazilim", 1, true)
+
+<!--Sayfa Çıktısı
+
+<input checked="checked" id="yazilim" name="yazilim" type="radio" value="1" />
+
+        -->
+<!----------------------------------------------------------------------------------------->
+<hr />
+
+<!----------------------------------------------------------------------------------------->
+<!--3. Kullanım
+    3. Kullanım Parametreleri;
+       1) "id" ve "name" atribute değerleri için parametre
+       2) "object" olarak istediği değeri, ilgili kontrol seçildiği zaman arka tarafa gönderir.
+       3) Html Atribute değerlerini belirleyebilmeniz için gerekli alan
+
+    NOT: Radio butonları gruplamak için 1. parametredeki değerler aynı olmak zorundadır. Aynı isim'de olan kontroller birer grup halinde çalışacaktır.
+-->
+Erkek : @Html.RadioButton("yazilim", 1, new { @style = "margin:100px;" })
+
+<!--Sayfa Çıktısı
+
+<input id="yazilim" name="yazilim" style="margin:100px;" type="radio" value="1" />
+
+        -->
+<!----------------------------------------------------------------------------------------->
+<hr />
+
+<!----------------------------------------------------------------------------------------->
+<!--4. Kullanım
+    4. Kullanım Parametreleri;
+       1) "id" ve "name" atribute değerleri için parametre
+       2) "object" olarak istediği değeri, ilgili kontrol seçildiği zaman arka tarafa gönderir.
+       3) Birden fazla Attribute değeri verebilmeniz için Dictionary olarak bir dizi ister
+
+    NOT: Radio butonları gruplamak için 1. parametredeki değerler aynı olmak zorundadır. Aynı isim'de olan kontroller birer grup halinde çalışacaktır.
+-->
+Erkek : @Html.RadioButton("yazilim", 1, new Dictionary<string, object>() { { "id", "cinsiyet" }, { "class", "renk" } })
+
+<!--Sayfa Çıktısı
+
+<input class="renk" id="cinsiyet" name="yazilim" type="radio" value="1" />
+
+        -->
+<!----------------------------------------------------------------------------------------->
+<hr />
+
+<!----------------------------------------------------------------------------------------->
+<!--5. Kullanım
+    5. Kullanım Parametreleri;
+       1) "id" ve "name" atribute değerleri için parametre
+       2) "object" olarak istediği değeri, ilgili kontrol seçildiği zaman arka tarafa gönderir.
+       3) "bool" tipinde aldığı parametre ile, açılışta seçili olarak gelmesini sağlarsınız.
+       4)  Html Atribute değerlerini belirleyebilmeniz için gerekli alan
+
+    NOT: Radio butonları gruplamak için 1. parametredeki değerler aynı olmak zorundadır. Aynı isim'de olan kontroller birer grup halinde çalışacaktır.
+-->
+Erkek : @Html.RadioButton("yazilim", 1, true, new { @style = "margin:100px" })
+
+<!--Sayfa Çıktısı
+
+<input checked="checked" id="yazilim" name="yazilim" style="margin:100px" type="radio" value="1" />
+
+       -->
+<!----------------------------------------------------------------------------------------->
+<hr />
+
+<!----------------------------------------------------------------------------------------->
+<!--6. Kullanım
+    6. Kullanım Parametreleri;
+       1) "id" ve "name" atribute değerleri için parametre
+       2) "object" olarak istediği değeri, ilgili kontrol seçildiği zaman arka tarafa gönderir.
+       3) "bool" tipinde aldığı parametre ile, açılışta seçili olarak gelmesini sağlarsınız.
+       4) Birden fazla Attribute değeri verebilmeniz için Dictionary olarak bir dizi ister
+
+    NOT: Radio butonları gruplamak için 1. parametredeki değerler aynı olmak zorundadır. Aynı isim'de olan kontroller birer grup halinde çalışacaktır.
+-->
+Erkek : @Html.RadioButton("yazilim", 1, true, new Dictionary<string, object>() { { "id", "cinsiyet" }, { "class", "renk" } })
+
+<!--Sayfa Çıktısı
+
+<input checked="checked" class="renk" id="cinsiyet" name="yazilim" type="radio" value="1" />
+
+         -->
+<!----------------------------------------------------------------------------------------->
+<hr />

@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@model List<MVC_Caching.Models.Category>
+
+<div class="row" style="margin-top:50px">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="col-lg-12">
+                <table class="table-hover table">
+                    <thead>
+                        <tr>
+                            <th>
+                                ID
+                            </th>
+                            <th>
+                                Kategori Adı
+                            </th>
+                            <th>
+                                Açıklama
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var category in Model)
+                        {
+                            <tr>
+                                <td>@category.CategoryID</td>
+                                <td>@category.CategoryName</td>
+                                <td>@category.Description</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,207 @@
+﻿
+@{
+    ViewBag.Title = "ActionLink";
+}
+@{
+    ViewBag.Title = "ActionLink";
+}
+
+<!--
+    Html.ActionLink() => <a href="#"></a> etiketinin karşılığıdır.
+-->
+<!----------------------------------------------------------------------------------------->
+<!--1. Kullanım
+    1. Kullanım Parametreleri;
+       1) Kullanıcının göreceği text kısmı için sizden string olarak değer ister.
+       2) Link'e tıklandığı anda hangi Action'a gidecek, string olarak Action Name ister.
+-->
+@Html.ActionLink("Anasayfa", "Index")
+
+<!--Sayfa Çıktısı
+
+<a href="/ActionLink">Anasayfa</a>
+
+        -->
+<!----------------------------------------------------------------------------------------->
+<hr />
+
+<!----------------------------------------------------------------------------------------->
+<!--2. Kullanım
+    2. Kullanım Parametreleri;
+       1) Kullanıcının göreceği text kısmı için sizden string olarak değer ister.
+       2) Link'e tıklandığı anda hangi Action'a gidecek, string olarak Action Name ister.
+       3) Url üzerinden parametre olarak id gönderimek istenirse  " new { id = 1 } " eğer id parametresi gönderilmeyecek ise " null " olarak işaretlenmelidir.
+
+-->
+@Html.ActionLink("Anasayfa", "Index", new { id = 1 })
+
+<!--Sayfa Çıktısı
+
+<a href="/ActionLink/Index/1">Anasayfa</a>
+
+        -->
+<!----------------------------------------------------------------------------------------->
+<hr />
+
+<!----------------------------------------------------------------------------------------->
+<!--3. Kullanım
+    3. Kullanım Parametreleri;
+       1) Kullanıcının göreceği text kısmı için sizden string olarak değer ister.
+       2) Link'e tıklandığı anda hangi Action'a gidecek, string olarak Action Name ister.
+       3) Link'e tıklandığı zaman "URL" üzerinden bir veya birden fazla parametre gönderilecek ise, "RouteValueDictionary" içerisinde işlemler gerçekleştirilebilir.
+
+    NOT: RouteConfig içerisinde route'tanımlanmamış ise sayfa çıktırısnda QueryString olarak parametreleri algılayacaktır.
+-->
+@Html.ActionLink("Anasayfa", "Index", new RouteValueDictionary(new { categoryID = 1, urunID = 2 }))
+
+<!--Sayfa Çıktısı
+
+<a href="/ActionLink?categoryID=1&amp;urunID=2">Anasayfa</a>
+
+        -->
+<!----------------------------------------------------------------------------------------->
+<hr />
+
+<!----------------------------------------------------------------------------------------->
+<!--4. Kullanım
+    4. Kullanım Parametreleri;
+       1) Kullanıcının göreceği text kısmı için sizden string olarak değer ister.
+       2) Link'e tıklandığı anda hangi Action'a gidecek, string olarak Action Name ister.
+       3) Link'e tıklandığı anda, eğer başka bir Controller içerisindeki bir Action'a gidecek ise, Controller Name belirlenir.
+
+
+-->
+@Html.ActionLink("Anasayfa", "Index", "Deneme")
+
+<!--Sayfa Çıktısı
+
+<a href="/Deneme">Anasayfa</a>
+
+        -->
+<!----------------------------------------------------------------------------------------->
+<hr />
+
+<!----------------------------------------------------------------------------------------->
+<!--5. Kullanım
+    5. Kullanım Parametreleri;
+       1) Kullanıcının göreceği text kısmı için sizden string olarak değer ister.
+       2) Link'e tıklandığı anda hangi Action'a gidecek, string olarak Action Name ister.
+       3) Url üzerinden parametre olarak id gönderimek istenirse  " new { id = 1 } " eğer id parametresi gönderilmeyecek ise " null " olarak işaretlenmelidir.
+       4) Html Atribute değerlerini belirleyebilmeniz için gerekli alan
+
+
+-->
+@Html.ActionLink("Anasayfa", "Index", new { id = 1 }, new { @style = "color:red" })
+
+<!--Sayfa Çıktısı
+
+<a href="/ActionLink/Index/1" style="color:red">Anasayfa</a>
+
+       -->
+<!----------------------------------------------------------------------------------------->
+<hr />
+
+<!----------------------------------------------------------------------------------------->
+<!--6. Kullanım
+    6. Kullanım Parametreleri;
+       1) Kullanıcının göreceği text kısmı için sizden string olarak değer ister.
+       2) Link'e tıklandığı anda hangi Action'a gidecek, string olarak Action Name ister.
+       3) Link'e tıklandığı zaman "URL" üzerinden bir veya birden fazla parametre gönderilecek ise, "RouteValueDictionary" içerisinde işlemler gerçekleştirilebilir.
+       4) Birden fazla Attribute değeri verebilmeniz için Dictionary olarak bir dizi ister
+
+-->
+@Html.ActionLink("Anasayfa", "Index", new RouteValueDictionary(new { categoryID = 1, urunID = 2 }), new Dictionary<string, object>() { { "id", "cinsiyet" }, { "class", "renk" } })
+
+<!--Sayfa Çıktısı
+
+<a class="renk" href="/ActionLink?categoryID=1&amp;urunID=2" id="cinsiyet">Anasayfa</a>
+
+       -->
+<!----------------------------------------------------------------------------------------->
+<hr />
+
+<!----------------------------------------------------------------------------------------->
+<!--7. Kullanım
+    7. Kullanım Parametreleri;
+       1) Kullanıcının göreceği text kısmı için sizden string olarak değer ister.
+       2) Link'e tıklandığı anda hangi Action'a gidecek, string olarak Action Name ister.
+       3) Link'e tıklandığı anda, eğer başka bir Controller içerisindeki bir Action'a gidecek ise, Controller Name belirlenir.
+       4) Url üzerinden parametre olarak id gönderimek istenirse  " new { id = 1 } " eğer id parametresi gönderilmeyecek ise " null " olarak işaretlenmelidir.
+       5) Html Atribute değerlerini belirleyebilmeniz için gerekli alan
+
+-->
+@Html.ActionLink("Anasayfa", "Index", "Deneme", new { id = 1 }, new { @style = "color:red" })
+
+<!--Sayfa Çıktısı
+
+<a href="/Deneme/Index/1" style="color:red">Anasayfa</a>
+
+       -->
+<!----------------------------------------------------------------------------------------->
+<hr />
+
+<!----------------------------------------------------------------------------------------->
+<!--8. Kullanım
+    8. Kullanım Parametreleri;
+       1) Kullanıcının göreceği text kısmı için sizden string olarak değer ister.
+       2) Link'e tıklandığı anda hangi Action'a gidecek, string olarak Action Name ister.
+       3) Link'e tıklandığı anda, eğer başka bir Controller içerisindeki bir Action'a gidecek ise, Controller Name belirlenir.
+       4) Link'e tıklandığı zaman "URL" üzerinden bir veya birden fazla parametre gönderilecek ise, "RouteValueDictionary" içerisinde işlemler gerçekleştirilebilir.
+       5) Birden fazla Attribute değeri verebilmeniz için Dictionary olarak bir dizi ister
+
+-->
+@Html.ActionLink("Anasayfa", "Index", "Deneme", new RouteValueDictionary(new { categoryID = 1, urunID = 2 }), new Dictionary<string, object>() { { "id", "cinsiyet" }, { "class", "renk" } })
+
+<!--Sayfa Çıktısı
+
+<a class="renk" href="/Deneme?categoryID=1&amp;urunID=2" id="cinsiyet">Anasayfa</a>
+
+           -->
+<!----------------------------------------------------------------------------------------->
+<hr />
+
+<!----------------------------------------------------------------------------------------->
+<!--9. Kullanım
+    9. Kullanım Parametreleri;
+       1) Kullanıcının göreceği text kısmı için sizden string olarak değer ister.
+       2) Link'e tıklandığı anda hangi Action'a gidecek, string olarak Action Name ister.
+       3) Link'e tıklandığı anda, eğer başka bir Controller içerisindeki bir Action'a gidecek ise, Controller Name belirlenir.
+       4) Hangi protokol üzerinden adrese gidecek http - https
+       5) Site Ulr
+       6) Tıklandığında hangi alana gidecek
+       7) Url üzerinden parametre olarak id gönderimek istenirse  " new { id = 1 } " eğer id parametresi gönderilmeyecek ise " null " olarak işaretlenmelidir.
+       8) Html Atribute değerlerini belirleyebilmeniz için gerekli alan
+
+-->
+@Html.ActionLink("Anasayfa", "Index", "Deneme", "https", "www.bilgeadam.com", "row", null, new { @style = "color:red" })
+
+<!--Sayfa Çıktısı
+
+<a href="https://www.bilgeadam.com/Deneme#row" style="color:red">Anasayfa</a>
+
+         -->
+<!----------------------------------------------------------------------------------------->
+<hr />
+
+<!----------------------------------------------------------------------------------------->
+<!--10. Kullanım
+    10. Kullanım Parametreleri;
+       1) Kullanıcının göreceği text kısmı için sizden string olarak değer ister.
+       2) Link'e tıklandığı anda hangi Action'a gidecek, string olarak Action Name ister.
+       3) Link'e tıklandığı anda, eğer başka bir Controller içerisindeki bir Action'a gidecek ise, Controller Name belirlenir.
+       4) Hangi protokol üzerinden adrese gidecek http - https
+       5) Site Ulr
+       6) Tıklandığında hangi alana gidecek
+       7) Url üzerinden parametre olarak id gönderimek istenirse  " new { id = 1 } " eğer id parametresi gönderilmeyecek ise " null " olarak işaretlenmelidir.
+       8) Birden fazla Attribute değeri verebilmeniz için Dictionary olarak bir dizi ister
+
+-->
+@*@Html.ActionLink("Anasayfa", "Index", "Deneme", "https", "www.bilgeadam.com", "row", new RouteValueDictionary(new { id = 1 }), new Dictionary<string, object>() { { "id", "cinsiyet" }, { "class", "renk" } })*@
+@Html.ActionLink("Anasayfa", "Index", "Deneme", "https", "www.bilgeadam.com", "row", null, new Dictionary<string, object>() { { "id", "cinsiyet" }, { "class", "renk" } })
+<!--Sayfa Çıktısı
+
+<a class="renk" href="https://www.bilgeadam.com/Deneme#row" id="cinsiyet">Anasayfa</a>
+
+           -->
+<!----------------------------------------------------------------------------------------->
+<hr />

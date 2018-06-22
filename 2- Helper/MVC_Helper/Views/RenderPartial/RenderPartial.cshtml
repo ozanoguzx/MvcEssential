@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "RenderPartial";
+}
+<!--
+
+    Html.RenderPartial metodu, çağırıldığı sayfanın TextWriter'ını kullanır. Yani doğrudan Http response stream'e yazılır. Bu yüzden Html.Partial metodundan daha hızlıdır.
+
+    Html.RenderPartial metodu void döndürür. Kullanımı kolaydır ve Action oluşturmaya gerek yoktur.
+    Html.RenderPartial metodu Süslü parantesler içerisinde tanımlanır.
+
+    Not : Eğer Göstermek istediğiniz Action "ActionResult" olarak tanımlı ise, tüm taglar ile yüklenir. PartialViewResult döner ise sadece sizin içerisinde tanımladığınız bölümler görünecektir.
+-->
+<!----------------------------------------------------------------------------------------->
+<!--1. Kullanım
+    1. Kullanım Parametreleri;
+       1) Aynı Controller İçerisindeki Action Adını verirseniz o Action Sayfa içerisinde konumlandırılacaktır.
+
+-->
+@{
+    Html.RenderPartial("_Partial");
+}
+
+<!----------------------------------------------------------------------------------------->
+<hr />
+<!----------------------------------------------------------------------------------------->
+<!--2. Kullanım
+    2. Kullanım Parametreleri;
+       1) Aynı Controller İçerisindeki Action Adını verirseniz o Action Sayfa içerisinde konumlandırılacaktır.
+       2) Object tipinde değer ister. Sayfa içerisinde göstermek istediğiniz değeri Partial içerisinde Model'den yakalayabilirsiniz.
+-->
+@{
+    Html.RenderPartial("_Partial", 12321);
+}
+
+<!----------------------------------------------------------------------------------------->
+<hr />
+<!----------------------------------------------------------------------------------------->
+<!--3. Kullanım
+    3. Kullanım Parametreleri;
+       1) Aynı Controller İçerisindeki Action Adını verirseniz o Action Sayfa içerisinde konumlandırılacaktır.
+       2) Birden fazla ViewData göndermek için kullanılır.
+-->
+@{
+    Html.RenderPartial("_PartialDictionary", new ViewDataDictionary { { "Sayilar", 032432 }, { "Harfler", "sadsadsaf" } });
+}
+
+<!----------------------------------------------------------------------------------------->
+<hr />
+<!----------------------------------------------------------------------------------------->
+<!--4. Kullanım
+    4. Kullanım Parametreleri;
+       1) Aynı Controller İçerisindeki Action Adını verirseniz o Action Sayfa içerisinde konumlandırılacaktır.
+       2) Object tipinde değer ister. Sayfa içerisinde göstermek istediğiniz değeri Partial içerisinde Model'den yakalayabilirsiniz.
+       3) Birden fazla ViewData göndermek için kullanılır.
+-->
+@{
+    Html.RenderPartial("_PartialDictionaryModel", 324, new ViewDataDictionary { { "Sayilar", 032432 }, { "Harfler", "sadsadsaf" } });
+}
+
+<!----------------------------------------------------------------------------------------->
+<hr />

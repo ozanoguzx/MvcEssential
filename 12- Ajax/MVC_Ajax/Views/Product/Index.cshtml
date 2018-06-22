@@ -1,0 +1,110 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@model List<MVC_Ajax.Models.Product>
+
+<div class="row" style="margin-top:50px;">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="col-lg-12">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <td>Ürün Id</td>
+                            <td>Ürün Adı</td>
+                            <td>Ürün Fiyat</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ProductID</td>
+                                <td>@item.ProductName</td>
+                                <td>@item.UnitPrice</td>
+                                <td>
+                                    @Ajax.ActionLink("Ürün Detay", "ProductDetail", new { id = item.ProductID }, new AjaxOptions()
+                               {
+                                   HttpMethod = "GET",
+                                   InsertionMode = InsertionMode.Replace,
+                                   UpdateTargetId = "productDetail",
+                                   LoadingElementId = "loading",
+                                   OnBegin = "onBegin",
+                                   OnSuccess = "onSuccess",
+                                   OnComplete = "onComplete",
+                                   OnFailure = "onFailure"
+
+                               }, new { @class = "btn btn-info" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*
+    UpdateTargetId :  İşlem sonunda gelen data bu alan içerisinde yer alacak
+*@
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="col-lg-12" id="productDetail">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*
+    LoadingElementId : data yüklenirken bu alan çalışacaktır.
+*@
+<div id="loading" style="position:absolute; top:20%; left:45%; display:none">
+    <img src="~/Content/Images/loading.gif" width="100" height="100" />
+</div>
+<script src="~/scripts/jquery-3.1.0.js"></script>
+<script>
+     
+    onBegin = function () { 
+        $("#productDetail").empty();
+
+        var elements = document.getElementsByTagName("a");
+        // Sayfa içerisinde Menüde " a " etiketi olduğundan index 1'den başlıyor
+        var index = 1;
+        var changeButton = setInterval(function () {
+            elements[index];
+            $(elements[index]).css({
+                "background-color": "rgb(210,50,45)",
+                "border": "1.33333px solid rgb(172,41,37)"
+            });
+            index++;
+        }, 900);
+
+        if (index > 6) {
+            clearInterval(changeButton);
+        }
+    };
+
+    onSuccess = function () {
+        //alert("işlem Başarılı Olursa Çalışır.");
+    }
+
+    onComplete = function () {
+        $("table tbody a").each(function () {
+            $(this).css({
+                "background-color": "rgb(57,179,215)",
+                "border": "1.33333px solid rgb(38,154,188)"
+            });
+        });
+    }
+
+    onFailure = function () {
+        alert("İşlem Hataya Düşerse Çalışır");
+    }
+</script>
+

@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@model List<MVC_Grid.Models.Category>
+
+<div class="row" style="margin-top:100px;">
+    <div class="panel panel-default">
+        <div class="panel panel-body">
+            <div class="col-lg-12">
+
+                @Html.Grid(Model).Columns(c =>
+{
+    c.Add(ct => ct.CategoryID).Titled("Kategori ID").Encoded(false).Sanitized(false);
+    c.Add(ct => ct.CategoryName).Titled("Kategori Adı").Sortable(true).Filterable(true).Encoded(false).Sanitized(false);
+    c.Add(ct => ct.Description).Titled("Açıklama").Sortable(true).Encoded(false).Filterable(true).Sanitized(false);
+}).WithPaging(4).Selectable(true)
+            </div>
+        </div>
+    </div>
+</div>

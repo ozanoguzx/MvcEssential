@@ -1,0 +1,36 @@
+﻿@model MVC_Ajax.Models.Product
+
+<div>
+    <dl class="dl-horizontal">
+        <dt style="color:tomato">
+            Ürün Adı :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+
+        <dt style="color:tomato">
+            Ürün Fiyat :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UnitPrice)
+        </dd>
+
+        <dt style="color:tomato">
+            Ürün Stok Adet :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UnitsInStock)
+        </dd>
+        <dt style="color:tomato">
+            Kategori Adı :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.CategoryName)
+        </dd>
+    </dl>
+</div>

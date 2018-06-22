@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Home Index</h2>
+
+<div class="btn-group">
+    <div class="col-lg-12">
+        @Html.ActionLink("Kategori", "Index", new { area = "Category" }, new { @class = "btn btn-default" })
+        @Html.ActionLink("Ürün", "Index", new { area = "Product" }, new { @class = "btn btn-default" })
+        @Html.ActionLink("Personel", "Index", new { area = "Employee" }, new { @class = "btn btn-default" })
+    </div>
+</div>
+
+
+@*
+    Multiple types were found that match the controller named 'Home'. This can happen if the route that services this request ('{controller}/{action}/{id}') does not specify namespaces to search for a controller that matches the request. If this is the case, register this route by calling an overload of the 'MapRoute' method that takes a 'namespaces' parameter.
+
+    The request for 'Home' has found the following matching controllers:
+    MVC_Area.Controllers.HomeController
+    MVC_Area.Areas.Product.Controllers.HomeController
+    MVC_Area.Areas.Employee.Controllers.HomeController
+    MVC_Area.Areas.Category.Controllers.HomeController
+
+    Hatası alıyor iseniz birden fazla aynı ada sahip Controller var olduğunu bildirmektedir. Routeconfig içerisine namespace eklemeniz gerekmektedir.
+*@

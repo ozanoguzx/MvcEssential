@@ -1,0 +1,152 @@
+﻿
+@{
+    ViewBag.Title = "LoginJQyery";
+}
+
+
+<img hidden="hidden" style="margin-left:130px; position:absolute; z-index:900" id="manSuperman" src="~/Content/Images/ManSuper.png" width="690" height="690" />
+
+<div class="clearfix">
+</div>
+<div class="row col-lg-offset-2 " style="position:absolute">
+    <div class="col-xs-8 col-sm-8 col-md-6 col-lg-5 col-centered" style="margin-top:10%">
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">
+                <img id="superMan" style="*max-height:60px;max-height:60px;*max-width:100%;max-width:100%;margin:15px 0;" src="~/Content/Images/superman.png" alt="Bilge Adam">
+            </div>
+            <div class="panel-body">
+                <div class="col-lg-12">
+                    <form class="form-horizontal" method="post" action="">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input id="userName" class="form-control" name="userName" style="outline: 0!important;box-shadow: none!important; min-width:100%" type="text" placeholder="Kullanıcı Adı Giriniz">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                <input id="password" class="form-control" name="password" placeholder="Şifre" style="outline: 0!important; box-shadow: none!important; min-width:100%" type="password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="has-success"> <div class="checkbox"> <label> <input type="checkbox" id="remember" name="Remember" value="true">Beni Hatırla</label> </div> </div>
+                        </div>
+                        <div class="form-group">
+                            <input id="btnLogin" type="button" class="btn btn-success btn-block" value="JQuery" style="min-width:100%">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/scripts/jquery-1.10.2.js"></script>
+<script src="~/scripts/jquery.cookie.js"></script>
+<script>
+    $(document).ready(function () {
+
+        var cookike = $.cookie("cookieJquery");
+        if (cookike != null) {
+            var gelenCookie = JSON.parse(cookike);
+
+            $("#userName").val(gelenCookie.name);
+            $("#password").val(gelenCookie.password);
+        }
+
+        $("#btnLogin").click(function () {
+
+            var userName = $("#userName").val();
+            var password = $("#password").val();
+
+            if (userName == "" || password == "") {
+
+                $("#manSuperman").show(3000);
+                setTimeout(function () {
+                    var index = 100;
+                    setInterval(function () {
+                        $("#manSuperman").css("opacity", index);
+                        index--;
+                    }, 100);
+                }, 100);
+
+                setTimeout(function () {
+                    location.reload();
+                }, 3000);
+            }
+            else {
+                if ($("#remember").val() == "true") {
+                    var userInformation = { name: $("#userName").val(), password: $("#password").val() };
+                    $.cookie.Json = true; // Json kullanabilmek için aktif hale getirme
+                    $.cookie.raw = true;  // encode ve decode (şifreleme) işlemleri
+
+                    var userInformation = JSON.stringify(userInformation);
+                    // userInformation = encodeURIComponent(userInformation); // Bu alan aktif edilir ise, çerezler içerisinde bilgiler şifrelenmiş şekilde yer almaktadır.
+
+                    $.cookie("cookieJquery", userInformation, { expires: 15 });
+                    window.location.href = "Index";
+                }
+            }
+        });
+    });
+
+</script>
+
+
+<!--
+
+Jquery Cookie Kullanım
+
+    Cookie Oluşturma
+    $.cookie('name','value');
+    $.cookie('nothing'); // => tanımsız
+
+--------------------------------------------------  
+    Cookie oturum süresi belirleme
+    $.cookie('name', 'value', { expires: 15 });
+
+--------------------------------------------------  
+    Sitenin tamamında geçerli süresi dolan çerez oluşturma
+    $.cookie('name', 'value', { expires: 15, path: '/' });
+
+--------------------------------------------------  
+    Cookie Okuma
+    var gelenCookie = $cookie.('name');
+
+
+    Var olan tüm cookie'leri okuma
+    var gelenCookiler = $.cookie();
+
+--------------------------------------------------  
+    Var olan cookie silme
+
+    Eğer silme işlemi başarılı olursa "true", başarısız olur ise "false" değerini döner
+    $.removeCookie('name'); // => true
+    $.removeCookie('nothing'); // => false
+
+    Silme işlemin de eğer "path" belirtilmiş ise, aynı bilgileri girerek silme işlemi gerçekleştirmeliyiz.
+    $.cookie('name', 'value', { path: '/' });
+
+    Hatalı kullanım. "false" değeri teslim eder.
+    $.removeCookie('name'); // => false
+  
+    Doğru kullanım şekli
+    $.removeCookie('name', { path: '/' }); // => true
+
+--------------------------------------------------  
+    Cookie içerisindeki bilgilerin gizlenmesi
+    $.cookie.raw = true;
+
+    Kullanım için 2 metot vardır.
+    encodeURIComponent/decodeURIComponent
+
+--------------------------------------------------  
+
+    Json Kullanımı
+
+    $.cookie.json = true; Aktif hale getirdikten sonra kullanmanız gereken 2 metot vardır.
+
+    JSON.stringify ve JSON.parse
+     
+-->

@@ -1,0 +1,14 @@
+﻿ Caching işlemleri;
+
+Caching işlemleri Data Caching ve Output Caching olarak ikiye ayrılır.
+
+Data Caching   : Veri tabanından veriler çekilerek nesne üzerinde barındırılır ve her istekte burdaki nesne üzerinden data çekilir. Belirtilen durumlarda Cache bozularak veritabanından güncel verinin çekilmesi sağlanır.
+
+Output Caching : MVC içerisinde Action'ları veya Actionların içerisindeki bölümleri farklı yapılar ile Cache'leme imkanına sahip olursunuz.
+
+İçeride kullanılan parametrelerin tanımları :
+
+
+
+Duration         : Saniye cinsinden parametre alır. Alınan değer kadar sayfayı veya bölümü Cache'ler
+VaryByParam      : RouteValue veya QueryString üzerinden gönderdiğiniz parametreye göre Cache'i bozmanıza olanak sağlar. Birden fazla parametre verilecek ise " ; " işareti ile ayırabilirsiniz ya da, " * " işareti ile tüm parametreler geçerlidir diyebilirsiniz.

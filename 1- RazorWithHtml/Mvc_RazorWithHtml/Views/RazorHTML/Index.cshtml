@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h1>Razor ve HTML</h1>
+
+<h3>Razor ile değişken nasıl ekrana yazdırılır?</h3>
+
+@* Razor ile değişken tanımama*@
+
+@{
+    string ad = "Ozan";
+    string soyad = "Oğuz";
+
+    <b>@ad</b>  <b>@soyad</b>
+}
+
+<h3>Razor ile Karar Yapıları</h3>
+@*Razor ile Karar Yapıları*@
+
+@{
+    if (ad != null)
+    {
+        <span>Boş Değil</span>
+    }
+    else
+    {
+        <span>İsim Boş</span>
+    }
+}
+
+<h3>Razor ile Döngüler</h3>
+@* Razor ile Döngüler *@
+@for (int i = 0; i < 10; i++)
+{
+    @ad <br />
+}
+
+@*test*@

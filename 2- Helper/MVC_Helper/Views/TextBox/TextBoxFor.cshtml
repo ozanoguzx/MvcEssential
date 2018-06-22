@@ -1,0 +1,105 @@
+﻿@{
+    ViewBag.Title = "TextBoxFor";
+}
+
+@section stil{
+    <style type="text/css">
+        .renk {
+            color: red;
+        }
+    </style>
+}
+
+
+@model MVC_Helper.Models.Personel
+
+
+<!--
+
+    Html.TextBoxFor() Sizden expression olarak parametreler istemektedir
+
+-->
+<!----------------------------------------------------------------------------------------->
+<!--1. Kullanım
+    1. Kullanım Parametreleri;
+       1) "id" ve "name" atribute değerleri için parametre
+-->
+@Html.TextBoxFor(x => x.Ad)
+
+<!--Sayfa Çıktısı
+    <input id="Ad" name="Ad" type="text" value="Murat" />
+    -->
+<!----------------------------------------------------------------------------------------->
+<hr />
+
+<!----------------------------------------------------------------------------------------->
+<!--2. Kullanım
+    2. Kullanım Parametreleri;
+       1) "id" ve "name"  atribute değerleri için parametre
+       2) Html Atribute değerlerini belirleyebilmeniz için gerekli alan
+-->
+@Html.TextBoxFor(x => x.Ad, new { @class = "renk" })
+
+<!--Sayfa Çıktısı
+    <input class="renk" id="Ad" name="Ad" type="text" value="Murat" />
+    -->
+<!----------------------------------------------------------------------------------------->
+
+<hr />
+<!----------------------------------------------------------------------------------------->
+<!--3. Kullanım
+    3. Kullanım Parametreleri;
+       1) "id" ve "name" atribute değerleri için parametre
+       2) TextBox içerisinde görünmesini istediğiniz değeri formatlamak için "string" olarak "format"
+-->
+@Html.TextBoxFor(x => x.DogumTarihi, "{0:yyyy/MM/dd}")
+
+<!--Sayfa Çıktısı
+<input data-val="true" data-val-date="The field DogumTarihi must be a date." data-val-required="The DogumTarihi field is required." id="DogumTarihi" name="DogumTarihi" type="text" value="1982.09.29" />
+    -->
+<!----------------------------------------------------------------------------------------->
+<hr />
+
+<!----------------------------------------------------------------------------------------->
+<!--4. Kullanım
+    4. Kullanım Parametreleri;
+       1) "id" ve "name" atribute değerleri için parametre
+       2) Birden fazla Attribute değeri verebilmeniz için Dictionary olarak bir dizi ister
+-->
+@Html.TextBoxFor(x => x.Ad, new Dictionary<string, object>() { { "id", "personelAdi" }, { "class", "renk" } })
+
+<!--Sayfa Çıktısı
+<input class="renk" id="personelAdi" name="Ad" type="text" value="Murat" />
+    -->
+<!----------------------------------------------------------------------------------------->
+<hr />
+
+<!----------------------------------------------------------------------------------------->
+<!--5. Kullanım
+    5. Kullanım Parametreleri;
+       1) "id" ve "name" atribute değerleri için parametre
+       2) TextBox içerisinde görünmesini istediğiniz değeri formatlamak için string olarak format
+       3) Html Atribute değerlerini belirleyebilmeniz için gerekli alan
+-->
+@Html.TextBoxFor(x => x.DogumTarihi, "{0:yyyy/MM/dd}", new { @style = "color:green" })
+
+<!--Sayfa Çıktısı
+<input id="DogumTarihi" name="DogumTarihi" style="color:green" type="text" value="1982.09.29" />
+    -->
+<!----------------------------------------------------------------------------------------->
+<hr />
+
+<!----------------------------------------------------------------------------------------->
+<!--6. Kullanım
+    6. Kullanım Parametreleri;
+       1) "id" ve "name" atribute değerleri için parametre
+       2) TextBox içerisinde görünmesini istediğiniz değeri formatlamak için string olarak format
+       3) Birden fazla Attribute değeri verebilmeniz için Dictionary olarak bir dizi ister
+-->
+@Html.TextBoxFor(x => x.DogumTarihi, "{0:yyyy/MM/dd}", new Dictionary<string, object>() { { "id", "personelAdi" }, { "class", "renk" } })
+
+<!--Sayfa Çıktısı
+<input class="renk" id="personelAdi" name="DogumTarihi" type="text" value="1982.09.29" />
+    -->
+<!----------------------------------------------------------------------------------------->
+<hr />

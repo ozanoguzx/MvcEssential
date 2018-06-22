@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+@Html.DeleteActionlink("Ürün Sil", "Delete", "Home", new { id = 1 }, new { @class = "btn btn-danger", @style = "margin-top:50px" })
+
+
+
+    Ekran çıktısı a etiketidir.
+
+@Html.Raw(CustomHelper.SayfayaGit("Index"))
+<br />
+
+    Ekran çıktısı a etiketi html kodları
+@CustomHelper.SayfayaGit("Index")
+
+
+@Html.Resim("/Content/Images/logo.jpg", "Bilge Adam", "50", "50")
+
+
+
+
+@Html.UpdateButton("Home", "Edit", new { id = 1, categoryId = 2 }, new { @class = "btn btn-danger", @style = "margin-top:50px" }, new { @class = "glyphicon glyphicon-trash" })

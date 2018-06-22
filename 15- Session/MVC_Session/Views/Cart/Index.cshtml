@@ -1,0 +1,117 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+
+}
+@model List<MVC_Session.Models.ProductVM>
+<div class="row" style="margin-top:50px">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="col-lg-12">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Ürün ID</th>
+                            <th>Ürün Adı</th>
+                            <th>Fiyat</th>
+                            <th>Stok Adet</th>
+                            <th>Adet</th>
+                            <th>Toplam Fiyat</th>
+                            <th>İşlem</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="col-lg-6 col-lg-offset-6">
+                <label>Ödemeniz Gereken Toplam Tutar : <span  id="totalCount"></span> $</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*Layout içerisinde olan Jquery kütüphanesini görmeyeceğinden intellicanse yardımcı olmayacaktır. Geçici olarak buraya ekleyip sonrasında silebilirsiniz.*@
+<script src="~/scripts/jquery-1.10.2.js"></script>
+
+<script type="text/javascript">
+
+    // Sayfa içerisinde tooltip'lerin çalışması için gerekli default kod satırı.
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+
+    $(document).ready(function () {
+
+        // Sayfa yiklendikten yarım saniye sonra, Istekde bulunularak data tablo içerisinde dolduruluyor.
+        setTimeout(function () { $.Cart.List() }, 500);
+
+        // Cart olarak kapsayıcı bir Fonskiyon listesi oluşturuldu.
+        $.Cart = {
+            // Session'dan gelen verileri ekranda göstermek için Json formatında gelen data eğer boş ise kullanıcıya sepetin boş olduğunu gösteren bir imaj, dolu ise tabloya veriler ekleniyor.
+            List: function () {
+                $.getJSON("http://localhost:8071/Cart/List", function (data) {
+                    $("table tbody tr").remove();
+                    var count = Object.keys(data).length;
+                    var totalCount = 0;
+                    if (count > 0) { 
+                        $.each(data, function (key, item) {
+                            $("table tbody").append(
+                                "<tr><td style='line-height:40px'>"
+                                + item.Id + "</td><td style='line-height:40px'>"
+                                + item.ProductName + "</td><td style='line-height:40px'>"
+                                + item.UnitPrice + "</td><td style='line-height:40px'>"
+                                + item.UnitsInstock + "</td><td style='line-height:40px'>"
+                                + item.Quantity + "</td><td style='line-height:40px'>" + (item.Quantity * item.UnitPrice) + "</td><td><img onclick='$.Cart.Increase(" + item.Id + ")' width='40' height='40' src='/Content/Images/Add.png' data-toggle='tooltip' data-placement='right' title='Arttır' /> <img onclick='$.Cart.Decrease(" + item.Id + ")' width='40' height='40' src='/Content/Images/Remove.png' data-toggle='tooltip' data-placement='right' title='Eksilt' /> <img onclick='$.Cart.Remove(" + item.Id + ")' width='40' height='40' src='/Content/Images/Shopping.png' data-toggle='tooltip' data-placement='right' title='Sepetten Sil' /></td></tr>")
+                            totalCount += (item.Quantity * item.UnitPrice);
+                        }); 
+                    }
+                    $("#totalCount").html(totalCount); 
+                });
+            },
+            // Bu metot içerisinde kullanıcı sepet içerisindeki listede bulunan ürünün adedini 1 adet arttırır.
+            Increase: function (Id) {
+                $.ajax({
+                    type: "POST",
+                    dataType: "Json",
+                    url: "@Url.Action("IncreaseCart", "Cart")/" + Id,
+                    success: function (data) {
+                        $.Cart.List();
+                    }
+                })
+            },
+            // Bu metot içerisinde kullanıcı sepet içerisindeki listede bulunan ürünün adedini 1 adet eksiltir.
+            Decrease: function (Id) {
+                $.ajax({
+                    type: "POST",
+                    dataType: "Json",
+                    url: "@Url.Action("DecreaseCart", "Cart")/" + Id,
+                    success: function (data) {
+                        $.Cart.List();
+                    }
+                })
+            },
+            Remove: function (Id) {
+                $.ajax({
+                    type: "POST",
+                    dataType: "Json",
+                    url: "@Url.Action("Remove", "Cart")/" + Id,
+                    success: function (data) {
+                        $.Cart.List();
+                    }
+                })
+            }
+        }
+    });
+</script>
+<style type="text/css">
+    img:hover {
+        cursor: pointer;
+    }
+</style>
+
+
